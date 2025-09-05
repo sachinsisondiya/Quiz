@@ -1,12 +1,12 @@
 
 import { useEffect , useState } from "react"
+import clsx from "clsx"
 import Questions from "./Questions"
 export default function Quiz(){
   
   const [questions ,setQuestions]  = useState([])
   const [selectedOptions , setSelectedOptions] = useState([])
-  const [correctAnswer , setCorrectAnswer] = useState([])
-  const [wrongAnswer , setWrongAnswer] = useState([])
+  const [results , setResults] = useState([])
 
   useEffect(()=>{
     let ignore  = false;
@@ -22,21 +22,38 @@ export default function Quiz(){
    }
 
   },[])
-  function handleClicked(option){
-   setSelectedOptions(prev => [...prev, option])
-   
+
+
+  function handleClicked(questionIndex ,option){
+   setSelectedOptions(prev => [...prev.filter((item)=> item.questionIndex !== questionIndex), {questionIndex , selected:option}])
   }
   console.log(selectedOptions)
   
   function checkAnswer(){
-    console.log(checked)
+    const results = selectedOptions.map((ans) =>{
+      const correct = questions[ans.questionIndex].correct_answer
+      return {
+        ...ans,
+        correct,
+        isCorrect: ans.selected === correct
+      }
+    })
+    setResults(results)
   } 
+  console.log(results)
+
   return (
   <div className="quiz-board">
 
     { questions.length > 0 ? questions.map((question, index)=>{
 
-      return <Questions key={index} question={question} onClick={handleClicked} />
+      return <Questions 
+      key={index}
+      questionIndex={index} 
+      question={question} 
+      onClick={handleClicked}
+      results = {results} 
+      />
 
     }) : <p>Loading...</p> }
     <button onClick={checkAnswer}> Check Answer</button>
