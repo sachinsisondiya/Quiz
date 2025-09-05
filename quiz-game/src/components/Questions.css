@@ -1,0 +1,29 @@
+.questions{
+  text-align: center;
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+}
+.questions p{
+  margin: 0px;
+  width: auto;
+  height: auto;
+  font-family: "karla", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  
+}
+.questions button{
+  width: auto;
+  height: auto;
+  background-color:#D6DBF5;
+  border-radius: 7.94px;
+  border: none;
+  padding: 0.4em 0.5em;
+  margin: 0.5em;
+}
+.questions button:hover{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
