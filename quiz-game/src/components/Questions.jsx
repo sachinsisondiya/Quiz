@@ -2,11 +2,12 @@ import "./Questions.css"
 import { useState, useEffect } from "react"
 import {decode} from 'html-entities'
 import clsx from "clsx"
-export default function Questions({question , onClick,questionIndex, results}){
+export default function Questions({question , onClick,questionIndex, results,selectedOptions}){
   const [options , setOptions] = useState([])
   const result = results.find( r =>{
    return r.questionIndex === questionIndex
   })
+  const selected = selectedOptions.find( s => s.questionIndex === questionIndex)
 
   useEffect(() =>{
 
@@ -23,24 +24,24 @@ export default function Questions({question , onClick,questionIndex, results}){
    
   }, [question])
 
-   
-
   
-  //  console.log(options)
   return (<div className="questions">
     <p>{decode(question.question)}</p>
     {options.map((option , index)=>{
-      const isSelected = result?.selected === option
+      const isSelected = selected?.selected === option
       const isCorrect = result?.correct === option
 
-      return <button key = {index} onClick={() =>{
+      return <button
+      key = {index}
+      onClick={() =>{
         onClick(questionIndex,option)
       }}
       className = {clsx("option-btn" ,
       isSelected && "selected",
       result && isCorrect && "correct",
-      result && isSelected && !isCorrect && "wrong"
-    )}>{decode(option)}</button>
+      result && isSelected && !isCorrect && "wrong")}
+      disabled={!!selected}
+      >{decode(option)}</button>
     })}
    
   </div>)
