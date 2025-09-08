@@ -1,4 +1,4 @@
-
+import "./Quiz.css"
 import { useEffect , useState } from "react"
 import Questions from "./Questions"
 export default function Quiz(){
@@ -54,9 +54,12 @@ export default function Quiz(){
 
 
   return (
-  <div className="quiz-board">
+  <div className="quiz-board container">
+    <div className="upper-style"></div>
+    <div className="lower-style"></div>
 
-    { questions.length > 0 ? questions.map((question, index)=>{
+    <div className="quiz-box">
+      { questions.length > 0 ? questions.map((question, index)=>{
 
       return <Questions 
       key={index}
@@ -68,12 +71,12 @@ export default function Quiz(){
       />
 
     }) : <p>Loading...</p> }
-     
-
-     {results.length > 0 ? <button onClick={resetGame}>resetQuiz</button>:<button onClick={checkAnswer}> Check Answer</button>}
-    
-    
-    
+     {results.length > 0 && <h3 className="score">You scored {results.filter(item => item.isCorrect).length}/5 correct answers</h3>}
+     {results.length > 0 ? <button
+     className="result-btn" onClick={resetGame}>Play again</button>:<button
+    onClick={checkAnswer}
+    className="result-btn"> Check Answer</button>}
+    </div>
      </div>
   )
 }

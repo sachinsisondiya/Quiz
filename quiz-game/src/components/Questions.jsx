@@ -7,7 +7,7 @@ export default function Questions({question , onClick,questionIndex, results,sel
   const result = results.find( r =>{
    return r.questionIndex === questionIndex
   })
-  const selected = selectedOptions.find( s => s.questionIndex === questionIndex)
+  const selected = selectedOptions.find(s => s.questionIndex === questionIndex)
 
   useEffect(() =>{
 
@@ -24,7 +24,10 @@ export default function Questions({question , onClick,questionIndex, results,sel
    
   }, [question])
 
+   
+
   
+  //  console.log(options)
   return (<div className="questions">
     <p>{decode(question.question)}</p>
     {options.map((option , index)=>{
@@ -32,16 +35,16 @@ export default function Questions({question , onClick,questionIndex, results,sel
       const isCorrect = result?.correct === option
 
       return <button
-      key = {index}
-      onClick={() =>{
+      disabled={!!selected}
+      key = {index} onClick={() =>{
         onClick(questionIndex,option)
       }}
       className = {clsx("option-btn" ,
       isSelected && "selected",
       result && isCorrect && "correct",
-      result && isSelected && !isCorrect && "wrong")}
-      disabled={!!selected}
-      >{decode(option)}</button>
+      result && isSelected && !isCorrect && "wrong"
+    )}
+    >{decode(option)}</button>
     })}
    
   </div>)

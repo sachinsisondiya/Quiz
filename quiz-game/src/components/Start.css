@@ -1,4 +1,5 @@
 .start-container{
+  margin: auto;
   width: 550px;
   height: 550px;
   background-color: #F5F7FB;
@@ -8,6 +9,8 @@
   justify-content: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  
 }
 .upper-style{
   width: 297px;
@@ -16,15 +19,32 @@
   position: absolute;
     
     top: -115px;
-    left: 394px;
+    right: -115px;
     rotate: 45deg;
-    z-index: 2;
+    z-index: 0;
+    clip-path: polygon(20% 0%, 100% 0%, 100% 60%, 60% 100%, 0% 80%, 0% 20%);
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%); */
 
 }
 .lower-style{
   width: 297px;
   height: 235px;
   background-color:#DEEBF8;
+  position:absolute;
+
+    bottom: -114px;
+    left: -135px;
+    rotate: 45deg;
+    z-index: 0;
+     clip-path:  polygon(34% -17%, 86% 11%, 100% 50%, 81% 100%, 21% 90%, -3% 62%);
+
+}
+.start-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 h1{
   text-align: center;
@@ -36,7 +56,7 @@ h1{
   color: #293264;
  
 }
-.start-container p {
+.start-box p {
   text-align: center;
   font-size: 16px;
   font-weight: 400;
@@ -45,7 +65,7 @@ h1{
   height: 19px;
   
 }
-.start-container button{
+.start-box button{
   width: 193px;
   height: 52px;
   border-radius: 15px;
@@ -55,12 +75,11 @@ h1{
   font-weight: 400;
    font-size: 16px;
    color: #F5F7FB;
+   cursor: pointer;
 
 }
-
-.start{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.start-box button:hover{
+  background-color: #5f70be; 
+  transform: scale(1.05);
 }
+

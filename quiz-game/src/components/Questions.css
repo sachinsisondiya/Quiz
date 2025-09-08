@@ -1,8 +1,12 @@
+
+
 .questions{
-  text-align: center;
+  text-align: left;
+  
   width: auto;
   height: auto;
-  border: 1px solid black;
+  border-bottom: 1px solid #DBDEF0;
+  margin: 6px;
 }
 .questions p{
   margin: 0px;
@@ -11,49 +15,36 @@
   font-family: "karla", sans-serif;
   font-weight: 700;
   font-size: 16px;
+  color:#293264 ;
   
 }
- /* button{
-  width: auto;
-  height: auto;
-  background-color:#ffffff;
-  border-radius: 7.94px;
-  border: none;
-  padding: 0.4em 0.5em;
-  margin: 0.5em;
-} */
-/* .option-btn {
-  margin: 4px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-} */
-
-
-
-
-
 
 .option-btn {
-  margin: 4px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+  width: auto;
+  height: auto;
+  padding: 0.5em 0.5em;
+  border: 0.5px solid #DBDEF0;
+  border-radius: 7.94px;
   cursor: pointer;
+  color: #293264;
+  font-weight: 700;
+  
 }
 
 .option-btn.selected {
-  display:disabled;
+
   background-color:#D6DBF5;
 }
 
 .option-btn.correct {
-  background-color: #4caf50; /* green */
+  background-color: #94D7A2;
   color: white;
 }
 
 .option-btn.wrong {
-  background-color: #f44336; /* red */
+  background-color: #F8BCBC; 
   color: white;
 }

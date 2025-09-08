@@ -1,16 +1,17 @@
 import "./Start.css"
 
 
-export default function Start(){
+export default function Start({setStart}){
   return (<>
-  <main className="start">
+  <main className="start-container">
     <div className="upper-style"></div>
-    <div className="start-container">
+    <div className="lower-style"></div>
+    <div className="start-box">
     <h1>Quizzical</h1>
     <p>Some description if needed</p>
-    <button>Start quiz</button>
+    <button onClick={() => setStart(true)}>Start quiz</button>
     </div>
-    <div className="lower-style">s</div>
+    
   </main>
   </>)
 }
